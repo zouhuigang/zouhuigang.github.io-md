@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE mycat:schema SYSTEM "schema.dtd">
+<mycat:schema xmlns:mycat="http://io.mycat/">
+	<schema name="yy_sys" checkSQLschema="false" sqlMaxLimit="100" dataNode="dn1">
+		<!--<table name="students_score" type="global" dataNode="dn1" />-->
+    </schema>
+
+	<!-- 定义MyCat的数据节点 -->  
+	<dataNode name="dn1" dataHost="localhost1" database="yy_sys" />
+	<!--<dataNode name="dn2" dataHost="localhost1" database="db2" />
+	<dataNode name="dn3" dataHost="localhost1" database="db3" />-->  
+
+	<dataHost name="localhost1" maxCon="1000" minCon="10" balance="3"
+			  writeType="0" dbType="mysql" dbDriver="native" switchType="1"  slaveThreshold="100">
+		<heartbeat>select user()</heartbeat>
+		<!-- can have multi write hosts -->
+		<writeHost host="mysql-master" url="139.196.48.36:30362" user="root"  password="demo">
+			<!-- can have multi read hosts -->
+			<readHost host="mysql-slave" url="139.196.48.36:31675" user="root" password="demo" />
+		</writeHost>
+		<writeHost host="mysql-slave" url="139.196.48.36:31675" user="root" password="demo" />
+	</dataHost>
+</mycat:schema>

@@ -1,0 +1,8 @@
+https://qa.51tywy.com  {
+    tls /caddy-www/fullchain.pem /caddy-www/privkey.pem
+    proxy / 139.196.16.67:80
+	root /caddy-www
+    gzip
+    log  /access.log
+}
+

@@ -1,0 +1,10 @@
+http://51tywy.com {
+    redir http://www.51tywy.com{uri} 301
+}
+51tywy.com  {
+    proxy / 139.196.16.67:80
+	root /caddy-www
+    gzip
+    log  /access.log
+}
+

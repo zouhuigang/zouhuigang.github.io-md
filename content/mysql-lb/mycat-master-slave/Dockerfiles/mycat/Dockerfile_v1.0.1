@@ -1,0 +1,13 @@
+#https://github.com/FlyingShit-XinHuang/docker-mycat/blob/master/Dockerfile
+#https://github.com/huiwq1990/DockerImages/tree/2c7afdde91f3302f21bf241759f56ef7fd28a100/mycat
+from centos:7
+#install java8
+ADD jdk-8u51-linux-x64.gz /usr/local
+RUN ln -s /usr/local/jdk1.8.0_51 /usr/local/java
+ENV JAVA_HOME /usr/local/java
+ENV PATH $PATH:$JAVA_HOME/bin
+#install mycat
+VOLUME /opt/mycat/conf
+ADD Mycat-server-1.6.5-release-20180122220033-linux.tar.gz /opt
+EXPOSE 8066 9066
+CMD ["/opt/mycat/bin/mycat","console"]
