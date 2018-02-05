@@ -189,6 +189,8 @@ Redis 官方提供了 redis-trib.rb 这个工具，就在解压目录的 src 目
 
 其中，前三个 ip:port 为第一台机器的节点，剩下三个为第二台机器。
 
+选项 --replicas 1 表示我们希望为集群中的每个主节点创建一个从节点,简单来说， 以上命令的意思就是让 redis-trib 程序创建一个包含三个主节点和三个从节点的集群。
+
 启动显示:
 
 	[root@k8s-master1 src]# redis-trib.rb  create  --replicas  1  10.81.128.152:7000  10.81.128.152:7001  10.81.128.152:7002 10.174.113.12:7003  10.174.113.12:7004 10.174.113.12:7005
@@ -247,6 +249,8 @@ Redis 官方提供了 redis-trib.rb 这个工具，就在解压目录的 src 目
 	[root@k8s-master1 src]# 
 
 
+这表示集群中的 16384 个槽都有至少一个主节点在处理， 集群运作正常
+
 
 ### 集群验证
 
@@ -302,6 +306,60 @@ Redis 集群会把数据存在一个 master 节点，然后在这个 master 和�
 需要注意的是：必须要3个或以上的主节点，否则在创建集群时会失败，并且当存活的主节点数小于总节点数的一半时，整个集群就无法提供服务了。
 
 
+
+### 修复集群
+
+官方是推荐使用redis-trib.rb fix 来修复集群…. ….  通过cluster nodes看到7001这个节点被干掉了… 那么 
+
+	redis-trib.rb fix 127.0.0.1:7001 
+
+如果还是启动不了的话，可以把相关的cluster-config-file节点同步信息删掉
+
+
+增加节点(默认add-node是添加主master节点):
+
+	 redis-trib.rb add-node 127.0.0.1:7006 
+
+增加从节点:
+
+	redis-trib.rb add-node –slave –master-id  'ee05942ee38a56421a07eea01bc6072fe5e23bfd' 127.0.0.1:7008  127.0.0.1:7000
+
+检查节点:
+
+	 redis-trib.rb check 127.0.0.1:7000
+
+删除节点:
+
+	redis-trib.rb del-node 127.0.0.1:7007 
+
+### 其他命令
+
+
+	[root@k8s-master-www redis_cluster]# redis-cli -h 10.174.113.12 -c -p 7005 
+	10.174.113.12:7005> cluster nodes
+	b00ceb42c0b70d5a1d0a871dbb7d40be84d886c0 10.174.113.12:7005@17005 myself,slave 1de034f10dc64112d17508f9449d6348a009dd5a 0 1517820001000 6 connected
+	93f83d01aed5ab5e6b0647ce8b32416d4d736130 10.81.128.152:7001@17001 master - 0 1517820003274 2 connected 10923-16383
+	4409835560b0b56d92bb9266278ea183eb03884f 10.174.113.12:7004@17004 slave 93f83d01aed5ab5e6b0647ce8b32416d4d736130 0 1517820004275 5 connected
+	3c6be53c482dfdcc26bad8ee4ac539a25f1b002e 10.81.128.152:7002@17002 slave 751d9dc0c1d758145a885b8c2ad7127d881e13b0 0 1517820003000 4 connected
+	1de034f10dc64112d17508f9449d6348a009dd5a 10.81.128.152:7000@17000 master - 0 1517820003000 1 connected 0-5460
+	751d9dc0c1d758145a885b8c2ad7127d881e13b0 10.174.113.12:7003@17003 master - 0 1517820001000 4 connected 5461-10922
+	10.174.113.12:7005> 
+
+
+模拟oom
+
+	redis-cli debug oom
+ 
+模拟宕机
+
+	redis-cli -p 7002 debug segfault 
+ 
+模拟hang
+
+	redis-cli -p 6379 DEBUG sleep 30
+
+
+
 ### 问题汇总
 
 Q1:
@@ -318,6 +376,10 @@ A1:
 	则需要更新ruby版本
 
 
+
+
+
+
 ### 参考文档
 
 [https://www.cnblogs.com/lihaoyang/p/6906444.html](https://www.cnblogs.com/lihaoyang/p/6906444.html)
@@ -326,6 +388,16 @@ A1:
 [http://blog.topspeedsnail.com/archives/7274](http://blog.topspeedsnail.com/archives/7274)
 
 [https://www.cnblogs.com/wuxl360/p/5920330.html](https://www.cnblogs.com/wuxl360/p/5920330.html)
+
+[http://redisdoc.com/topic/cluster-tutorial.html](http://redisdoc.com/topic/cluster-tutorial.html)
+
+[http://www.chuodu.com/693.html](http://www.chuodu.com/693.html)
+
+[http://elvis4139.iteye.com/blog/2404696](http://elvis4139.iteye.com/blog/2404696)
+
+[http://xiaorui.cc/2015/05/19/%E4%BD%BF%E7%94%A8redis-trib-fix%E5%91%BD%E4%BB%A4%E4%BF%AE%E5%A4%8Dredis-cluster%E8%8A%82%E7%82%B9/](http://xiaorui.cc/2015/05/19/%E4%BD%BF%E7%94%A8redis-trib-fix%E5%91%BD%E4%BB%A4%E4%BF%AE%E5%A4%8Dredis-cluster%E8%8A%82%E7%82%B9/)
+
+[http://xiaorui.cc/2015/05/16/%e9%80%9a%e8%bf%87redis-trib-rb%e8%84%9a%e6%9c%ac%e6%9e%84%e5%bb%ba%e5%b9%b6%e5%a2%9e%e5%88%a0%e6%94%b9%e6%9f%a5redis-cluster%e9%9b%86%e7%be%a4/](http://xiaorui.cc/2015/05/16/%e9%80%9a%e8%bf%87redis-trib-rb%e8%84%9a%e6%9c%ac%e6%9e%84%e5%bb%ba%e5%b9%b6%e5%a2%9e%e5%88%a0%e6%94%b9%e6%9f%a5redis-cluster%e9%9b%86%e7%be%a4/)
 
 
 
