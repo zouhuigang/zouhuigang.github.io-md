@@ -6,6 +6,12 @@
 [zouhuigang.github.io](zouhuigang.github.io)
 
 
+文件说明:
+
+	markdown -> zouhuigang.github.io-md
+	html -> zouhuigang.github.io
+
+
 发布到master:
 
 	cd D:\mnt\zouhuigang.github.io
