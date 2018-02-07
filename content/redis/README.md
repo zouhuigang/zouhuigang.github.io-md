@@ -92,6 +92,41 @@
 
 
 
+### list类型
+>Redis Lindex 命令用于通过索引获取列表中的元素。你也可以使用负数下标，以 -1 表示列表的最后一个元素， -2 表示列表的倒数第二个元素，以此类推
+
+![images](../images/041122275024610.png)
+
+查看list中的第一个元素:
+
+	LINDEX mylist 0
+
+获取列表指定范围内的元素:
+
+	LRANGE pingan:insert 0 10
+	lrange  pingan:insert 0 -1 #查看所有元素
+
+获取队列的长度:
+
+	 Llen pingan:insert
+
+入队列：
+
+	lpush pingan:insert  aaaa
+
+插入值(php代码):
+
+		$insertArr=array();
+    	$insertArr["siteid"]="1062_1135";
+		$insertArr["cname"]="邹慧刚";
+		$insertArr["sex"]="男";
+		$insertArr["telephone"]="18516573852";
+		$insertArr["birthday"]=date("Y-m-d",time());
+		$insertArr["adddate"]=date("Y-m-d H:i:s",time());
+		$json = json_encode($insertArr);
+		$obj_cluster->lpush("pingan:insert",$json);
+
+
 问题汇总:
 
 Q1:
@@ -110,6 +145,10 @@ A1:
 ### 参考文档
 
 [http://www.yiibai.com/redis/redis_quick_guide.html](http://www.yiibai.com/redis/redis_quick_guide.html)
+
+[http://blog.csdn.net/qq_37610423/article/details/72660063](http://blog.csdn.net/qq_37610423/article/details/72660063)
+
+[https://www.cnblogs.com/chrdai/p/6841474.html](https://www.cnblogs.com/chrdai/p/6841474.html)
 
 
 

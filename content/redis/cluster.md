@@ -307,6 +307,11 @@ Redis 集群会把数据存在一个 master 节点，然后在这个 master 和�
 
 
 
+### 外网访问
+
+	iptables -A INPUT -p tcp -m state --state NEW -m tcp --dport 7000 -j ACCEPT 
+
+
 ### 修复集群
 
 官方是推荐使用redis-trib.rb fix 来修复集群…. ….  通过cluster nodes看到7001这个节点被干掉了… 那么 
@@ -357,6 +362,8 @@ Redis 集群会把数据存在一个 master 节点，然后在这个 master 和�
 模拟hang
 
 	redis-cli -p 6379 DEBUG sleep 30
+
+
 
 
 
