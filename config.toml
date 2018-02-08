@@ -1,4 +1,4 @@
-baseURL = "http://zouhuigang.github.io/"
+baseURL = "http://zouhuigang.anooc.com/"
 title = "蓝蓝的小火苗 (www.anooc.com) "
 subtitle = " 技术博客 "
 languageCode = "en-us"
@@ -73,8 +73,5 @@ categories=["资源管理"]
     facebook_like = true
 
 [taxonomies]
-    tags = "tags"
-    categories = "categories"
-    author =  "author"
-
-
+    tag = "tags"
+	category = "categories"

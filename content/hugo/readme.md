@@ -1,6 +1,8 @@
 ---
 title: "README"
 date: 2018-01-30T17:13:58+08:00
+tags: ["post", "tag2", "tag3"]
+categories: ["index"]
 draft: true
 ---
 
