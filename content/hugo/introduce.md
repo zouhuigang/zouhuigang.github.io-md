@@ -1,10 +1,13 @@
 ---
-title: "README"
-date: 2018-01-30T17:13:58+08:00
-tags: ["post", "tag2", "tag3"]
-categories: ["index"]
-draft: true
+title: "Introduce"
+author: zouhuigang introduce.md hugo\introduce.md hugo\
+date: 2018-02-08 22:14:33
+banner: img/indiagate1.jpg
+Categories: ["hugo"]
+tags: ["Introduce"]
+draft: false
 ---
+
 
 ### hugo
 
@@ -84,11 +87,3 @@ about.md 自动生成到了 content/about.md ，打开 about.md 看下:
 （注意，以上命令并不会生成草稿页面，如果未生成任何文章，请去掉文章头部的 draft=true 再重新生成。）
 
 如果一切顺利，所有静态页面都会生成到 public 目录，将pubilc目录里所有文件 push 到刚创建的Repository的 master 分支。
-	
-
-
-
-
-
-
-	

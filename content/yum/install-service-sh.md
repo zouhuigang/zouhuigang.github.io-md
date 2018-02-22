@@ -1,7 +1,7 @@
 ---
 title: "Install Service Sh"
 date: 2018-02-08T13:35:30+08:00
-draft: true
+draft: false
 tags: ["yum", "service"]
 categories: ["linux"]
 ---

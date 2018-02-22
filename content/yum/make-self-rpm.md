@@ -1,7 +1,7 @@
 ---
 title: "Make Self Rpm"
 date: 2018-02-07T22:44:45+08:00
-draft: true
+draft: false
 ---
 
 
