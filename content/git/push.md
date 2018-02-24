@@ -1,10 +1,11 @@
 ---
 title: "让git push命令不再需要密码"
+description: "让git push命令不再需要密码-zouhuigang.anooc.com"
 author: 邹慧刚
-date: 2018-02-24 15:01:27
+date: 2018-02-24T16:45:55+08:00
 categories:
-  - "git"
-tags: ["post", "Push"]
+  - "hugo"
+tags: ["post", "Use"]
 draft: false
 ---
 
@@ -41,4 +42,10 @@ id_rsa.pub
 
 
 ![images](../images/20180224153927.png)
+
+
+
+参考文档：
+
+[http://blog.csdn.net/lonyw/article/details/75392410](http://blog.csdn.net/lonyw/article/details/75392410)
 
