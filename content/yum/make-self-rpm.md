@@ -1,6 +1,10 @@
 ---
-title: "Make Self Rpm"
-date: 2018-02-07T22:44:45+08:00
+title: "制作rpm软件包"
+author: zouhuigang
+date: 2018-02-22 18:18:52
+categories:
+  - "yum"
+tags: ["post", "make self rpm"]
 draft: false
 ---
 

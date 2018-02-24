@@ -1,8 +1,8 @@
 ---
 title: "yum仓库搭建"
-author: zouhuigang build-warehouse.md yum\build-warehouse.md yum\
+author: zouhuigang
 date: 2018-02-09 15:24:36
-banner: img/indiagate1.jpg
+banner: images/20180222153847.png
 categories:
   - "yum"
 tags: ["post", "Build Warehouse"]
