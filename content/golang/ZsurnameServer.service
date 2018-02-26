@@ -1,0 +1,14 @@
+[Unit]
+Description=zouhuigang zsurname server
+Documentation=https://github.com/zouhuigang
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/nfs_file/software/zsurname
+ExecStart=/nfs_file/software/zsurname/ZsurnameServer
+Restart=on-failure
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,14 @@
+[Unit]
+Description=zouhuigang excel server
+Documentation=https://github.com/zouhuigang
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/nfs_file/software/zexcel/
+ExecStart=/nfs_file/software/zexcel/ZexcelServer &
+Restart=on-failure
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

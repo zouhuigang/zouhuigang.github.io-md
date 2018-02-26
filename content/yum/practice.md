@@ -24,6 +24,8 @@ draft: false
 	cd /home/yum/centos7/x86_64/ 
 	python -m SimpleHTTPServer 8081 &>/dev/null &  
 
+[http://blog.csdn.net/why19940926/article/details/62054757](http://blog.csdn.net/why19940926/article/details/62054757)
+
 将rpm软件上传到/home/yum/centos7/x86_64目录下，然后更新：
 
 	createrepo --update /home/yum/centos7/x86_64/
