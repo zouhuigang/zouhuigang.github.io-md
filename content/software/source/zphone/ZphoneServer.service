@@ -1,0 +1,14 @@
+[Unit]
+Description=zouhuigang phone server
+Documentation=https://github.com/zouhuigang
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/usr/local/software/zphone
+ExecStart=/usr/local/software/zphone/ZphoneServer
+Restart=on-failure
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

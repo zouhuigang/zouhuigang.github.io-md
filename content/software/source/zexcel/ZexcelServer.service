@@ -1,0 +1,14 @@
+[Unit]
+Description=zouhuigang zexcel server
+Documentation=https://github.com/zouhuigang
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/usr/local/software/zexcel
+ExecStart=/usr/local/software/zexcel/ZexcelServer
+Restart=on-failure
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
