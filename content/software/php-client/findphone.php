@@ -1,0 +1,31 @@
+<?php
+//http://m.xbaod.com/m/ztest/findphone.php
+header("Content-type: text/html; charset=utf-8"); 
+//error_reporting(-1);ini_set('display_errors', 1);
+require_once __DIR__ . '/ComposerAutoload.php';
+error_reporting(-1); //error_reporting(0);
+ini_set('display_errors', 1);
+ini_set('memory_limit','1000M');//给php-fpm设置可用的内存大小
+set_time_limit(0);//执行不限时
+
+
+use Hprose\Client;
+
+try {
+		$client = Client::create('http://47.100.76.132:3333/', false);    //qa
+		$arrObject=$client->findPhone("18516573852");//0代表，第一个excel,1代表第二行数据开始读取到文件结束,含第二行
+
+
+}catch (Exception $e) {
+		print $e->getMessage();
+		exit();
+}
+
+
+
+//得到数据
+$arr=json_decode(json_encode($arrObject),true);
+	print_r($arr);
+
+die;
+?>
