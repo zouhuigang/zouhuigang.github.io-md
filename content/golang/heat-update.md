@@ -142,6 +142,24 @@ Q1:systemd日志出现异常
 
 	Warning: Journal has been rotated since unit was started. Log output is incomplete or unavailable.并且服务输出的日志也都不可见。
 
+总结：主要是journalctl满了，才会出现这种情况，可以
+
+	journalctl   --vacuum-size=1G 
+
+来释放占用的磁盘空间，日志文件保存在/var/log/journal/目录下。
+
+
+默认配置：
+
+	#限制全部日志文件加在一起最多可以占用多少空间，默认值是10%空间与4G空间两者中的较小者
+	SystemMaxUse=64G 
+	#默认值是15%空间与4G空间两者中的较大者
+	SystemKeepFree=1G 
+	
+	#单个日志文件的大小限制，超过此限制将触发滚动保存
+	SystemMaxFileSize=128M 
+
+
 A1:
 
 这是由于btrfs 挂载的/var/log路径比systemd-journald.service启动时间晚导致。所以我们需要修改/usr/lib/systemd/system/systemd-journald.service ，在After=local-fs.target添加local-fs.target。这样systemd-journald.service就比文件系统挂载晚。该问题就可以得到解决。
@@ -174,6 +192,24 @@ A1:
 	https://www.linuxquestions.org/questions/linux-newbie-8/systemd-fails-to-write-4175527467/
 	http://ju.outofmemory.cn/entry/343962
 	https://www.lulinux.com/archives/3135
+
+
+A2:
+
+
+### 问题描述
+
+	原先/var/log/journal/的journald日志一直占用4G的存储空间，因为个人电脑不需要保留这么长久的日志信息，通过设置/etc/systemd/journald.conf SystemMaxUse=500M 将日志信息限制到500M
+	但是问题来了，通过systemctl status xx.service查看服务运行状态的时候发现所有的服务日志的最后一行全都是Warning: Journal has been rotated since unit was started. Log output is incomplete or unavailable.
+
+### 问题解决
+
+	查阅官方资料发现SystemMaxUse确实可以限制日志容量，但是到达容量上限以后是不会删除原先日志文件
+	我是通过SystemMaxFiles=20限制最多存在20个文件，占容量500M~600M，这下才解决问题
+
+
+	https://github.com/MatcherAny/MatcherAny/issues/3
+	https://www.cnblogs.com/hadex/p/6837688.html
 
 
 
