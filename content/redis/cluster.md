@@ -337,6 +337,78 @@ Redis 集群会把数据存在一个 master 节点，然后在这个 master 和�
 
 	redis-trib.rb del-node 127.0.0.1:7007 
 
+
+### 设置访问密码
+
+
+1.如果是使用redis-trib.rb工具构建集群，集群构建完成前不要配置密码，集群构建完毕再通过config set + config rewrite命令逐个机器设置密码
+
+2.如果对集群设置密码，那么requirepass和masterauth都需要设置，否则发生主从切换时，就会遇到授权问题，可以模拟并观察日志
+
+3.各个节点的密码都必须一致，否则Redirected就会失败
+
+
+##### 方式一：修改所有Redis集群中的redis.conf配置文件： 
+
+	masterauth passwd123 
+	requirepass passwd123 
+	说明：这种方式需要重新启动各节点
+
+##### 方式二：进入各个实例进行设置 (采用这种方式，不用重启)： 
+
+	./redis-cli -c -p 7000 
+	config set masterauth passwd123 
+	config set requirepass passwd123 
+	config rewrite 
+
+之后分别使用./redis-cli -c -p 7001，./redis-cli -c -p 7002…..命令给各节点设置上密码 
+注意：各个节点密码都必须一致，否则Redirected就会失败， 推荐这种方式，这种方式会把密码写入到redis.conf里面去，且不用重启
+
+### 密码验证
+
+	[root@k8s-master1 ~]# redis-cli -h 10.81.128.152 -c -p 7002 
+	10.81.128.152:7002> keys *
+	(error) NOAUTH Authentication required.
+	10.81.128.152:7002> 
+
+
+使用密码认证登录，并验证操作权限：
+
+	$  redis-cli -h 10.81.128.152 -c -p 7002  -a myPassword
+	127.0.0.1:6379> config get requirepass
+	1) "requirepass"
+	2) "myPassword"
+
+
+看到类似上面的输出，说明Reids密码认证配置成功。
+
+
+##### 设置密码之后如果需要使用redis-trib.rb的各种命令 
+
+如：redis-trib.rb check 127.0.0.1，则会报错ERR] Sorry, can’t connect to node 127.0.0.1:7000 
+解决办法： 
+vim /usr/lib/ruby/gems/1.8/gems/redis-3.3.0/lib/redis/client.rb,然后修改passord
+
+	class Client
+    DEFAULTS = {
+      :url => lambda { ENV["REDIS_URL"] },
+      :scheme => "redis",
+      :host => "127.0.0.1",
+      :port => 6379,
+      :path => nil,
+      :timeout => 5.0,
+      :password => "passwd123",
+      :db => 0,
+      :driver => nil,
+      :id => nil,
+      :tcp_keepalive => 0,
+      :reconnect_attempts => 1,
+      :inherit_socket => false
+    }
+
+
+	
+
 ### 其他命令
 
 
@@ -405,6 +477,8 @@ A1:
 [http://xiaorui.cc/2015/05/19/%E4%BD%BF%E7%94%A8redis-trib-fix%E5%91%BD%E4%BB%A4%E4%BF%AE%E5%A4%8Dredis-cluster%E8%8A%82%E7%82%B9/](http://xiaorui.cc/2015/05/19/%E4%BD%BF%E7%94%A8redis-trib-fix%E5%91%BD%E4%BB%A4%E4%BF%AE%E5%A4%8Dredis-cluster%E8%8A%82%E7%82%B9/)
 
 [http://xiaorui.cc/2015/05/16/%e9%80%9a%e8%bf%87redis-trib-rb%e8%84%9a%e6%9c%ac%e6%9e%84%e5%bb%ba%e5%b9%b6%e5%a2%9e%e5%88%a0%e6%94%b9%e6%9f%a5redis-cluster%e9%9b%86%e7%be%a4/](http://xiaorui.cc/2015/05/16/%e9%80%9a%e8%bf%87redis-trib-rb%e8%84%9a%e6%9c%ac%e6%9e%84%e5%bb%ba%e5%b9%b6%e5%a2%9e%e5%88%a0%e6%94%b9%e6%9f%a5redis-cluster%e9%9b%86%e7%be%a4/)
+
+[http://blog.csdn.net/zsg88/article/details/73732845](http://blog.csdn.net/zsg88/article/details/73732845)
 
 
 

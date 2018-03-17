@@ -66,6 +66,52 @@
 
 
 
+### 修改配置
+
+	https://www.alibabacloud.com/zh/notice/memcached_03_03
+
+    11211端口不安全,更改端口，设置仅仅内网可以访问
+
+	 /usr/bin/memcached -b -l 10.81.128.152 -p 11244 -m 150 -u root
+
+-b 守护进程模式（退出终端窗口之后使程序还在运行），-l 指定IP地址127.0.0.1 ，-p 指定端口号11211，-m 为memcached分配多少内存（单位：M），-u 指定使用哪个用户启动memcached
+
+
+或者
+
+vi /etc/sysconfig/memcached
+
+	PORT="11211"
+	USER="memcached"
+	MAXCONN="1024"
+	CACHESIZE="64"
+	OPTIONS=""
+
+修改成:
+	
+	PORT="11244"
+	USER="memcached"
+	MAXCONN="1024"
+	CACHESIZE="64"
+	OPTIONS="-l 10.81.128.152"
+
+说明：
+	
+	PORT：服务启动端口
+
+	USER：服务启动用户
+	
+	MAXCONN：服务配置支持最大连接数
+	
+	CACHESIZE：服务支持的最大内存，以M为单位。
+
+
+启动：
+
+	systemctl start/stop/restart memcached.service
+
+	
+
 
 ### 问题汇总
 
