@@ -4,7 +4,9 @@
 package znotify
 
 import (
+	"encoding/json"
 	"fmt"
+	"github.com/zouhuigang/package/zlog"
 	"log"
 	"time"
 )
@@ -66,6 +68,19 @@ func tickHandler(t time.Time, bucketName string) {
 		// job元信息不存在, 从bucket中删除
 		if job == nil {
 			removeFromBucket(bucketName, bucketItem.jobId)
+			continue
+		}
+
+		//判断已经通知的次数是否超过了规定的次数，如果达到了，则把当前job当作垃圾处理掉
+		if job.N > 8 {
+			removeFromBucket(bucketName, bucketItem.jobId)
+			removeJob(bucketItem.jobId)
+			jsons, errs := json.Marshal(job) //转换成JSON返回的是byte[]
+			if errs != nil {
+				//fmt.Println(errs.Error())
+				zlog.Infof(errs.Error())
+			}
+			zlog.Infof(string(jsons))
 			continue
 		}
 

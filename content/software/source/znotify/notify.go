@@ -6,6 +6,7 @@ import (
 	//"github.com/zouhuigang/msgpack"
 	//. "github.com/zouhuigang/config"
 	"github.com/zouhuigang/package/zhttp"
+	"github.com/zouhuigang/package/zlog"
 	"github.com/zouhuigang/package/zredis"
 )
 
@@ -21,6 +22,8 @@ func init() {
 	redisConfig.ReadTimeout = 180000
 	redisConfig.WriteTimeout = 3000
 	zredis.RedisPool = zredis.InitRedisPool(redisConfig)
+
+	zlog.Init("./", "INFO")
 }
 
 //发送请求
