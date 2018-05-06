@@ -52,6 +52,19 @@ draft: false
 	cmd-> echo %HOME%
 
 
+windows:
+
+	git clone git://github.com/gruntjs/grunt-init-gruntfile.git %USERPROFILE%/.grunt-init/gruntfile 
+
+
+
+或者:
+
+	git clone git://github.com/gruntjs/grunt-init-gruntfile.git %HOME%/.grunt-init/gruntfile
+
+	grunt-init  %HOME%/.grunt-init/gruntfile
+
+
 
 
 三种分别对应默认grunt模板，jquery插件的grunt模板，node包的grunt模板。
@@ -66,6 +79,21 @@ draft: false
 
 
 
+### 安装iview-admin
+
+	cd D:\www\yiyang\static2 && git clone https://github.com/iview/iview-admin.git
+	cd D:\www\yiyang\static2\iview-admin
+	安装依赖
+	npm install --save-dev
+
+	运行
+	npm run dev
+	
+	打包
+	npm run build
+	
+
+https://www.cnblogs.com/chaojidan/p/4239562.html?utm_source=tuicool&utm_medium=referral
 
 
 http://blog.sae.sina.com.cn/archives/4106
