@@ -120,9 +120,8 @@ func httpPost(mq Message) (string, error) {
 }
 
 //消费者客户端
-
-func Init() {
-	topic := "notify"
+func ConsumeInit(topic string) {
+	//topic := "notify"
 	go consume(topic)
 }
 

@@ -139,6 +139,11 @@ help，可以看到redis-trib.rb具有以下功能：
 	ps -ef | grep redis
 	netstat -tnlp | grep redis
 
+
+### 关闭redis 
+
+	pkill -9 redis
+
 第一台服务器显示：
 
 	[root@k8s-master1 redis]# ps -ef | grep redis

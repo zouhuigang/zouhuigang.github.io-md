@@ -14,10 +14,9 @@ import (
 var (
 	// 每个定时器对应一个bucket
 	timers []*time.Ticker
+	//通知间隔{0,0,2m,10m,10m,1h,2h,6h,15h}
+	intervalArr = [9]int64{0, 0, 120, 600, 600, 3600, 7200, 21600, 54000}
 )
-
-//通知间隔
-//const interval
 
 // 初始化定时器
 func initTimers() {
@@ -81,6 +80,18 @@ func tickHandler(t time.Time, bucketName string) {
 				zlog.Infof(errs.Error())
 			}
 			zlog.Infof(string(jsons))
+			continue
+		}
+		//在被消费完成后，过了ttr等待时间，没有得到正确的响应，则重新计算时间周期
+		if job.State == reserved && job.N > 0 {
+			//更改job的状态
+			SwitchState(job, delay, false)
+			// 从bucket中删除旧的jobId
+			removeFromBucket(bucketName, bucketItem.jobId)
+			nextTime := time.Now().Unix() + intervalArr[job.N]
+			// 重新计算delay时间并放入bucket中
+			pushToBucket(<-bucketNameChan, nextTime, bucketItem.jobId)
+			log.Printf("消费完成，重新计算[%s,%v]", nextTime, job)
 			continue
 		}
 
