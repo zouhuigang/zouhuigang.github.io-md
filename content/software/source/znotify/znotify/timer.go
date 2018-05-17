@@ -64,6 +64,17 @@ func tickHandler(t time.Time, bucketName string) {
 			continue
 		}
 
+		//新加===删除已被消费或标记为删除的job
+		//log.Printf("time handle [%d,%v]", job.State, job)
+		//删除被标记为delete的job
+		if job.State == deleted {
+			// 从bucket中删除旧的jobId
+			removeFromBucket(bucketName, bucketItem.jobId)
+			//删除job
+			removeJob(bucketItem.jobId)
+			return
+		}
+
 		// job元信息不存在, 从bucket中删除
 		if job == nil {
 			removeFromBucket(bucketName, bucketItem.jobId)

@@ -1,0 +1,40 @@
+package main
+
+import (
+	"errors"
+	"fmt"
+	"io/ioutil"
+	"net/http"
+	"net/url"
+	"strings"
+)
+
+func main() {
+
+	re, _ := httpPost()
+
+	if strings.Contains(re, "success") {
+		fmt.Printf("成功:%v", re)
+	} else {
+		fmt.Printf("失败:%s", re)
+	}
+
+}
+
+//回调方法
+func httpPost() (string, error) {
+
+	resp, err := http.PostForm("https://www.hehuomaiche.com/znotify/message/sendtpl_msg", url.Values{"key": {"Value"}, "data": {}})
+
+	if err != nil {
+		errors.New("http post request error")
+	}
+	defer resp.Body.Close()
+	//需要看一下http头是否返回200
+	body, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		// handle error
+	}
+
+	return string(body), nil
+}

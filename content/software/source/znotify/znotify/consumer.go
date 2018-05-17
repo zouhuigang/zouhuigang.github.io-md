@@ -13,6 +13,7 @@ import (
 	"log"
 	"net/http"
 	"net/url"
+	"strings"
 	"time"
 )
 
@@ -72,7 +73,6 @@ func GetReadyQueue(topic string) error {
 		return nil
 	}
 	tmp := string(byteValue)
-	log.Printf("GetReadyQueue[%v]\n", tmp)
 	job, err := getJob(tmp)
 	if err != nil {
 		errors.New("get job error")
@@ -82,9 +82,13 @@ func GetReadyQueue(topic string) error {
 		errors.New("http post error")
 	}
 
-	if respone == "success" { //更改状态
+	//log.Printf("respone:%s\n", respone)
+	if strings.Contains(respone, "success") { //更改状态
 		//将job标记为删除状态，下一次时间周期，自动删除标记为deleted的job
 		SwitchState(job, deleted, true)
+		//放回桶里，等待时钟周期执行，删除掉
+		timestamp := time.Now().Unix() + 5
+		err = pushToBucket(<-bucketNameChan, timestamp, job.Id)
 
 	} else {
 		//没有得到正确回复，回到桶里
@@ -99,7 +103,7 @@ func GetReadyQueue(topic string) error {
 
 //回调方法
 func httpPost(mq Message) (string, error) {
-	println(mq.Notify_url)
+	//println(mq.Notify_url)
 	tmp, err := json.Marshal(mq)
 	if err != nil {
 		errors.New("Json 解析失败")

@@ -4,7 +4,7 @@ package znotify
 import (
 	"github.com/zouhuigang/msgpack"
 	"github.com/zouhuigang/package/zredis"
-	"log"
+	//"log"
 )
 
 type Message struct {
@@ -46,7 +46,7 @@ func getJob(key string) (*Message, error) {
 		return nil, err
 	}
 
-	log.Printf("get Job [%v]", mq)
+	//log.Printf("get Job [%v]", mq)
 
 	return mq, nil
 }
