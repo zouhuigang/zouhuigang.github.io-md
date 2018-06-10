@@ -49,12 +49,7 @@ mkfontdir
 fc-cache -fv
 
 
-### ssh
 
-ssh -l root 47.100.76.132
-
-
-IL20180320abcHJK@
 
 ### golang
 
