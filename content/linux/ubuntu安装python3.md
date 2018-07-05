@@ -19,6 +19,19 @@
 这里使用xfz命令，而不建议使用-xvzf命令，因为其释放的文件夹需要root权限才可以更改或者删除。
 
 	cd  /Python-3.7.0
+
+	./configure   --prefix=/usr/bin/python3.7 
+	sudo make
+	sudo make install
+	
+更改软链接,修改默认Python版本 
+	sudo rm -rf /usr/bin/python
+
+	ln -s /usr/bin/python3.7/bin/python3.7  /usr/bin/python
+
+查看版本:
+
+	python -V
 	
 ### Virtualenv 多版本python共用
 验证是否安装:
