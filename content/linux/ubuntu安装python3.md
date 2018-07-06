@@ -33,6 +33,37 @@
 
 	python -V
 	
+安装之后，发现pip install 报错:
+
+	Traceback (most recent call last):
+	  File "/usr/bin/pip", line 9, in <module>
+	    from pip import main
+	ImportError: cannot import name 'main' from 'pip' (/usr/bin/python3.7/lib/python3.7/site-packages/pip/__init__.py)
+
+
+解决:
+	
+	$ sudo python -m pip --version
+	pip 10.0.1 from /usr/bin/python3.7/lib/python3.7/site-packages/pip (python 3.7)
+
+	# # $sudo python -m pip install numpy --upgrade
+	
+修改文件:
+	**sudo which pip**
+	vi /usr/bin/pip
+pip 10.0.0不支持main，下载低版本pip:
+
+	python -m pip install --user --upgrade pip==9.0.3
+	
+再次查看版本:
+
+	zhg@zhg-ThinkPad-E450c:~$ pip --version
+	pip 9.0.3 from /home/zhg/.local/lib/python3.7/site-packages (python 3.7)
+
+	
+	
+	
+	
 ### Virtualenv 多版本python共用
 验证是否安装:
 
