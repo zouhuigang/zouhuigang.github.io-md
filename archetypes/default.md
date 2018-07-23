@@ -1,10 +1,6 @@
 ---
-title: "{{ replace .TranslationBaseName "-" " " | title }}"
-description: "这是一段描述-zouhuigang.anooc.com"
-author: 邹慧刚
+title: "{{ replace .Name "-" " " | title }}"
 date: {{ .Date }}
-categories:
-  - "{{ replace .Dir "\\" "" }}"
-tags: ["post", "{{ replace .TranslationBaseName "-" " " | title }}"]
-draft: false
+draft: true
 ---
+

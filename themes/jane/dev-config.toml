@@ -1,7 +1,7 @@
 # This config file only for develop
 # This file is hugo-theme-jane demo-site config
 
-#baseURL = "http://en.xianmin.org/hugo-theme-jane/"
+baseURL = "http://en.xianmin.org/hugo-theme-jane/"
 # title = "Jane - A simple theme for Hugo"
 enableRobotsTXT = true
 enableEmoji = true
@@ -28,7 +28,7 @@ defaultContentLanguage = "en"  # Default language to use (if you setup multiling
   languageName = "English"
   weight = 1
 [languages.zh-cn]
-  title = "anooc —— 一个简洁的 Hugo 主题"
+  title = "Jane —— 一个简洁的 Hugo 主题"
   languageName = "中文"
   weight = 2
 
@@ -113,7 +113,7 @@ defaultContentLanguage = "en"  # Default language to use (if you setup multiling
   rssFullContent = true     # if false, Rss feed instead of the summary
 
   # site info (optional)                                  # 站点信息（可选，不需要的可以直接注释掉）
-  logoTitle = "Anooc"        # default: the title value    # 默认值: 上面设置的title值
+  logoTitle = "Jane"        # default: the title value    # 默认值: 上面设置的title值
   keywords = ["Hugo", "theme","jane"]
   description = "Hugo theme jane example site."
 

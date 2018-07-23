@@ -1,14 +1,12 @@
-@echo off
-#cmdÖĞµÄ±àÂë·½Ê½ÎªANSI£¬ÈôÖĞÎÄ²»ÊÇ´Ë±àÂë·½Ê½Ôò»á³öÏÖÂÒÂë¡£
+#!/bin/bash
+
 git add -A
-git commit -am "¸üĞÂÄÚÈİ"
+git commit -am "æ›´æ–°å†…å®¹"
 git push origin master
 
-#¸üĞÂpublic¿â
+#æ›´æ–°publicåº“
 hugo --theme=jane --buildDrafts --baseUrl="https://zouhuigang.github.io/"
 cd public
 git add -A
-git commit -am "¸üĞÂÍøÕ¾ÄÚÈİ"
+git commit -am "æ›´æ–°ç½‘ç«™å†…å®¹"
 git push origin master
-
-pause
