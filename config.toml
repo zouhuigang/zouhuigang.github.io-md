@@ -57,12 +57,12 @@ defaultContentLanguage = "en"  # Default language to use (if you setup multiling
   identifier = "存档"
   url = "post/"
 [[languages.en.menu.main]]
-  name = "Tags"
+  name = "标签"
   weight = 30
   identifier = "tags"
   url = "tags/"
 [[languages.en.menu.main]]
-  name = "Categories"
+  name = "分类"
   weight = 40
   identifier = "categories"
   url = "categories/"

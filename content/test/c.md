@@ -1,12 +1,12 @@
 ---
-title: "{{ replace .TranslationBaseName "-" " " | title }}"
-date: {{ .Date }}
-lastmod: {{ .Date }}
+title: "C"
+date: 2018-07-23T15:11:54+08:00
+lastmod: 2018-07-23T15:11:54+08:00
 draft: true
 keywords: []
 description: ""
-tags: ["preview", "Syntax Highlighting", "tag-5"]
-categories: ["Syntax Highlighting", "index"]
+tags: []
+categories: []
 author: ""
 
 # You can also close(false) or open(true) something for this content.
