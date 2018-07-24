@@ -1,12 +1,23 @@
 ---
-title: "Install Service Sh"
-date: 2018-02-08T13:35:30+08:00
+#标题
+title: "install-service-sh"
+#描述
+description: ""
+#创建日期
+date: 2018-07-24
+#修改日期
+lastmod: 2018-07-24
+#草稿
 draft: false
-tags: ["yum", "service"]
-categories: ["linux"]
+#关键字
+keywords: []
+#标签
+tags: [post,yum]
+#分类
+categories: [post,yum]
+#作者
+author: "邹慧刚"
 ---
-
-
 ### 自动生成service脚本
 
 	

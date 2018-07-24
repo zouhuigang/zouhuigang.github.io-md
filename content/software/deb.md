@@ -1,3 +1,23 @@
+---
+#标题
+title: "deb"
+#描述
+description: ""
+#创建日期
+date: 2018-07-24
+#修改日期
+lastmod: 2018-07-24
+#草稿
+draft: false
+#关键字
+keywords: []
+#标签
+tags: [post,software]
+#分类
+categories: [post,software]
+#作者
+author: "邹慧刚"
+---
 ### 将服务打包成ubuntu下可直接安装的程序
 
 	sudo apt-get install dh-make

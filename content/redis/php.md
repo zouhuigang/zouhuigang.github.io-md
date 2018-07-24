@@ -1,3 +1,23 @@
+---
+#标题
+title: "php"
+#描述
+description: ""
+#创建日期
+date: 2018-07-24
+#修改日期
+lastmod: 2018-07-24
+#草稿
+draft: false
+#关键字
+keywords: []
+#标签
+tags: [post,redis]
+#分类
+categories: [post,redis]
+#作者
+author: "邹慧刚"
+---
 ### php连接集群
 
 	$obj_cluster = new RedisCluster(NULL, ['10.81.128.152:7000', '10.81.128.152:7001' ,'10.81.128.152:7002','10.174.113.12:7003', '10.174.113.12:7004','10.174.113.12:7005', 1.5, 1.5]);

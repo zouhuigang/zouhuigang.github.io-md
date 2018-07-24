@@ -1,14 +1,23 @@
 ---
-title: "golang实现文件的热更新"
-description: "golang实现文件的热更新-zouhuigang.anooc.com"
-author: 邹慧刚
-date: 2018-02-26T15:35:23+08:00
-categories:
-  - "golang"
-tags: ["post", "Heat Update"]
+#标题
+title: "heat-update"
+#描述
+description: ""
+#创建日期
+date: 2018-07-24
+#修改日期
+lastmod: 2018-07-24
+#草稿
 draft: false
+#关键字
+keywords: []
+#标签
+tags: [post,golang]
+#分类
+categories: [post,golang]
+#作者
+author: "邹慧刚"
 ---
-
 ### golang实现文件的热更新
 
 

@@ -1,15 +1,23 @@
 ---
-title: "开始学习dos攻击"
-description: "这是一段描述-zouhuigang.anooc.com"
-author: 邹慧刚
-date: 2018-03-05T22:10:06+08:00
-categories:
-  - "dos"
-tags: ["post", "Start"]
+#标题
+title: "start"
+#描述
+description: ""
+#创建日期
+date: 2018-07-24
+#修改日期
+lastmod: 2018-07-24
+#草稿
 draft: false
+#关键字
+keywords: []
+#标签
+tags: [post,dos]
+#分类
+categories: [post,dos]
+#作者
+author: "邹慧刚"
 ---
-
-
 ### 开始学习dos攻击
 
 

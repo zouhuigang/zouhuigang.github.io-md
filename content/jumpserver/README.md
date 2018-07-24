@@ -1,3 +1,23 @@
+---
+#标题
+title: "README"
+#描述
+description: ""
+#创建日期
+date: 2018-07-24
+#修改日期
+lastmod: 2018-07-24
+#草稿
+draft: false
+#关键字
+keywords: []
+#标签
+tags: [post,jumpserver]
+#分类
+categories: [post,jumpserver]
+#作者
+author: "邹慧刚"
+---
 ### 1.第一次使用jumpserver的几个概念
 
 " 公私钥"认证方式简单的解释:首先在客户端上创建一对公私钥 （公钥文件：~/.ssh/id_rsa.pub； 私钥文件：~/.ssh/id_rsa）。然后把公钥放到服务器上（~/.ssh/authorized_keys）, 自己保留好私钥.在使用ssh登录时,ssh程序会发送私钥去和服务器上的公钥做匹配.如果匹配成功就可以登录了。

@@ -1,3 +1,23 @@
+---
+#标题
+title: "mysql重置密码"
+#描述
+description: ""
+#创建日期
+date: 2018-07-24
+#修改日期
+lastmod: 2018-07-24
+#草稿
+draft: false
+#关键字
+keywords: []
+#标签
+tags: [post,mysql-lb]
+#分类
+categories: [post,mysql-lb]
+#作者
+author: "邹慧刚"
+---
 ### 查看版本
  mysql > status
 	mysql  Ver 8.0.11 for Linux on x86_64 (Source distribution)

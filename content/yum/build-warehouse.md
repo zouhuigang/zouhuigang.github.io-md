@@ -1,15 +1,23 @@
 ---
-title: "yum仓库搭建"
-author: zouhuigang
-date: 2018-02-09 15:24:36
-banner: images/20180222153847.png
-categories:
-  - "yum"
-tags: ["post", "Build Warehouse"]
+#标题
+title: "build-warehouse"
+#描述
+description: ""
+#创建日期
+date: 2018-07-24
+#修改日期
+lastmod: 2018-07-24
+#草稿
 draft: false
+#关键字
+keywords: []
+#标签
+tags: [post,yum]
+#分类
+categories: [post,yum]
+#作者
+author: "邹慧刚"
 ---
-
-
 # yum仓库搭建
 
 

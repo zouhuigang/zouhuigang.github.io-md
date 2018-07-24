@@ -1,3 +1,23 @@
+---
+#标题
+title: "README"
+#描述
+description: ""
+#创建日期
+date: 2018-07-24
+#修改日期
+lastmod: 2018-07-24
+#草稿
+draft: false
+#关键字
+keywords: []
+#标签
+tags: [post,mycat-master-slave]
+#分类
+categories: [post,mycat-master-slave]
+#作者
+author: "邹慧刚"
+---
 ### 单实例的局限
 
 目前，我所遇见的问题是在单台mysql中，接口源源不断的进来数据，导致一台mysql的写入并发在高峰时，支持每秒N多数据的写入。

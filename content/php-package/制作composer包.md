@@ -1,3 +1,23 @@
+---
+#标题
+title: "制作composer包"
+#描述
+description: ""
+#创建日期
+date: 2018-07-24
+#修改日期
+lastmod: 2018-07-24
+#草稿
+draft: false
+#关键字
+keywords: []
+#标签
+tags: [post,php-package]
+#分类
+categories: [post,php-package]
+#作者
+author: "邹慧刚"
+---
 ### 开发 composer 包有以下几个步骤：
 
     初始化 composer.json 文件

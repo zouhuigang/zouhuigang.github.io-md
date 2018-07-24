@@ -1,15 +1,23 @@
 ---
-title: "让git push命令不再需要密码"
-description: "让git push命令不再需要密码-zouhuigang.anooc.com"
-author: 邹慧刚
-date: 2018-02-24T16:45:55+08:00
-categories:
-  - "hugo"
-tags: ["post", "Use"]
+#标题
+title: "push"
+#描述
+description: ""
+#创建日期
+date: 2018-07-24
+#修改日期
+lastmod: 2018-07-24
+#草稿
 draft: false
+#关键字
+keywords: []
+#标签
+tags: [post,git]
+#分类
+categories: [post,git]
+#作者
+author: "邹慧刚"
 ---
-
-
 hugo的一些md参数
 
 	{{.LogicalName}} {{.Path}} {{.Dir}}

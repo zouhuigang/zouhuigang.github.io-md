@@ -1,14 +1,23 @@
 ---
-title: "制作rpm软件包"
-author: zouhuigang
-date: 2018-02-22 18:18:52
-categories:
-  - "yum"
-tags: ["post", "make self rpm"]
+#标题
+title: "make-self-rpm"
+#描述
+description: ""
+#创建日期
+date: 2018-07-24
+#修改日期
+lastmod: 2018-07-24
+#草稿
 draft: false
+#关键字
+keywords: []
+#标签
+tags: [post,yum]
+#分类
+categories: [post,yum]
+#作者
+author: "邹慧刚"
 ---
-
-
 ### 自己制作rpm软件包，方便使用yum安装软件
 
 

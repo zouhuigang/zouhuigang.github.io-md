@@ -1,14 +1,23 @@
 ---
-title: "Introduce"
-author: zouhuigang introduce.md hugo\introduce.md hugo\
-date: 2018-02-08 22:14:33
-banner: img/indiagate1.jpg
-Categories: ["hugo"]
-tags: ["Introduce"]
+#标题
+title: "introduce"
+#描述
+description: ""
+#创建日期
+date: 2018-07-24
+#修改日期
+lastmod: 2018-07-24
+#草稿
 draft: false
+#关键字
+keywords: []
+#标签
+tags: [post,hugo]
+#分类
+categories: [post,hugo]
+#作者
+author: "邹慧刚"
 ---
-
-
 ### hugo
 
 Hugo是由Go语言实现的静态网站生成器。简单、易用、高效、易扩展、快速部署。

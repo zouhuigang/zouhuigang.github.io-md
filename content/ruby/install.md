@@ -1,14 +1,23 @@
 ---
-title: "安装最新版本的ruby"
-description: "安装最新版本的ruby-zouhuigang.anooc.com"
-author: 邹慧刚
-date: 2018-02-28T16:57:46+08:00
-categories:
-  - "ruby"
-tags: ["post", "ruby"]
+#标题
+title: "install"
+#描述
+description: ""
+#创建日期
+date: 2018-07-24
+#修改日期
+lastmod: 2018-07-24
+#草稿
 draft: false
+#关键字
+keywords: []
+#标签
+tags: [post,ruby]
+#分类
+categories: [post,ruby]
+#作者
+author: "邹慧刚"
 ---
-
 ### 安装最新版本的ruby
 
 下载地址:

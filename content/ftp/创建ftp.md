@@ -1,3 +1,23 @@
+---
+#标题
+title: "创建ftp"
+#描述
+description: ""
+#创建日期
+date: 2018-07-24
+#修改日期
+lastmod: 2018-07-24
+#草稿
+draft: false
+#关键字
+keywords: []
+#标签
+tags: [post,ftp]
+#分类
+categories: [post,ftp]
+#作者
+author: "邹慧刚"
+---
 生成一个fpt账户:
 
 	阿里云主机

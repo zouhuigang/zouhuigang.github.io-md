@@ -1,3 +1,23 @@
+---
+#标题
+title: "ubuntu安装python3"
+#描述
+description: ""
+#创建日期
+date: 2018-07-24
+#修改日期
+lastmod: 2018-07-24
+#草稿
+draft: false
+#关键字
+keywords: []
+#标签
+tags: [post,python]
+#分类
+categories: [post,python]
+#作者
+author: "邹慧刚"
+---
 ### 升级python3，不要卸载python2,因为一些其他的系统需要python2
 
 去官网下载最新的安装包：

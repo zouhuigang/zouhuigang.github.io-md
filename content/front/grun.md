@@ -1,17 +1,23 @@
 ---
-title: "Grun"
-description: "这是一段描述-zouhuigang.anooc.com"
-author: 邹慧刚
-date: 2018-04-10T09:51:15+08:00
-categories:
-  - "front"
-tags: ["post", "Grun"]
+#标题
+title: "grun"
+#描述
+description: ""
+#创建日期
+date: 2018-07-24
+#修改日期
+lastmod: 2018-07-24
+#草稿
 draft: false
+#关键字
+keywords: []
+#标签
+tags: [post,front]
+#分类
+categories: [post,front]
+#作者
+author: "邹慧刚"
 ---
-
-
-
-
 ### 打开项目目录：
 
  	cd D:\www\yiyang\static

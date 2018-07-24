@@ -1,15 +1,23 @@
 ---
-title: "rpm软件打包及环境搭建"
-description: "rpm软件打包及环境搭建-zouhuigang.anooc.com"
-author: 邹慧刚
-date: 2018-02-27T17:22:54+08:00
-categories:
-  - "software"
-tags: ["post", "Rpm"]
+#标题
+title: "rpm"
+#描述
+description: ""
+#创建日期
+date: 2018-07-24
+#修改日期
+lastmod: 2018-07-24
+#草稿
 draft: false
+#关键字
+keywords: []
+#标签
+tags: [post,software]
+#分类
+categories: [post,software]
+#作者
+author: "邹慧刚"
 ---
-
-
 ### 初始化环境
 
 构建软件环境
